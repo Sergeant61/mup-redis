@@ -2,6 +2,8 @@ var joi = require('joi');
 
 var schema = joi.object().keys({
   version: joi.string(),
+  host: joi.string().optional(),
+  port: joi.string().optional(),
   servers: joi.object().keys().required()
 });
 

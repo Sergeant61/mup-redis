@@ -2,6 +2,8 @@
 
 REDIS_VERSION=<%= redisVersion %>
 REDIS_DIR=<%= redisDir %>
+REDIS_HOST=<%= redisHost %>
+REDIS_PORT=<%= redisPort %>
 
 set -e
 sudo docker pull redis:$REDIS_VERSION
@@ -18,7 +20,7 @@ echo "Starting redis:$REDIS_VERSION"
 sudo docker run \
   -d \
   --restart=always \
-  --publish=127.0.0.1:6379:6379 \
+  --publish=$REDIS_HOST:$REDIS_PORT:6379 \
   --volume $REDIS_DIR/data:/data \
   --name=redis \
   redis:$REDIS_VERSION \

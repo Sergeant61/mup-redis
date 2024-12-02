@@ -29,6 +29,8 @@ module.exports = {
       script: api.resolvePath(__dirname, 'assets/redis-setup.sh'),
       vars: {
         redisVersion: redisConfig.version || '3.2.10-alpine',
+        redisHost: redisConfig.host || '127.0.0.1',
+        redisPort: redisConfig.port || '6379',
         redisDir: '/opt/redis'
       }
     });
@@ -53,6 +55,8 @@ module.exports = {
       script: api.resolvePath(__dirname, 'assets/redis-start.sh'),
       vars: {
         redisVersion: config.version || '3.2.10-alpine',
+        redisHost: config.host || '127.0.0.1',
+        redisPort: config.port || '6379',
         redisDir: '/opt/redis'
       }
     });

@@ -16,7 +16,10 @@ module.exports = {
     // Server to run redis on.
     servers: { one: {} },
     // Version of redis. Add '-alpine' to use a much smaller docker image
-    version: '3.2.10-alpine'
+    version: '3.2.10-alpine',
+
+    host: '127.0.0.1', // external redis host (optional) (default: 127.0.0.1) 
+    port: 6379, // external redis port (optional) (default: 6379) 
   }
 }
 ```
