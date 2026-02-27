@@ -36,8 +36,26 @@ module.exports = {
       if (!config.app.docker.args) {
         config.app.docker.args = [];
       }
-      config.app.docker.args.push('--link=redis:redis');
-      config.app.docker.args.push('--env=REDIS_URL=redis://redis:6379');
+
+      var redisHost = config.redis.host || '127.0.0.1';
+      var redisPort = config.redis.port || 6379;
+
+      var redisServerName = Object.keys(config.redis.servers)[0];
+      var appServerNames = Object.keys(config.app.servers);
+      var sameHost = redisServerName
+        && appServerNames.length === 1
+        && config.servers[redisServerName]
+        && config.servers[appServerNames[0]]
+        && config.servers[redisServerName].host === config.servers[appServerNames[0]].host;
+
+      if (sameHost && redisHost === '127.0.0.1') {
+        // Single machine — use Docker link
+        config.app.docker.args.push('--link=redis:redis');
+        config.app.docker.args.push('--env=REDIS_URL=redis://redis:' + redisPort);
+      } else {
+        // Multi machine — connect over network
+        config.app.docker.args.push('--env=REDIS_URL=redis://' + redisHost + ':' + redisPort);
+      }
     }
   },
   hooks: {

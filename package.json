@@ -1,23 +1,23 @@
 {
-  "name": "mup-redis",
-  "version": "0.2.2",
+  "name": "mup-redis-plugin",
+  "version": "0.2.3",
   "description": "Plugin for Meteor Up to add support for redis",
   "main": "index.js",
   "scripts": {
     "test": "eslint ."
   },
-  "author": "zodern",
+  "author": "Sergeant61",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zodern/mup-redis.git"
+    "url": "https://github.com/Sergeant61/mup-redis.git"
   },
   "keywords": [
     "meteor-up",
     "redis"
   ],
-  "homepage": "https://github.com/zodern/mup-redis",
-  "bugs": "https://github.com/zodern/mup-redis/issues",
+  "homepage": "https://github.com/Sergeant61/mup-redis",
+  "bugs": "https://github.com/Sergeant61/mup-redis/issues",
   "dependencies": {
     "joi": "^10.6.0"
   },

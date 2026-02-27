@@ -8,20 +8,7 @@ module.exports = {
     }
 
     var redisSessions = api.getSessions(['redis']);
-    var appSessions = api.getSessions(['app']);
     var redisConfig = api.getConfig().redis;
-
-    if (appSessions.length !== 1) {
-      console.log(
-        'To use built-in redis setup, you have to have only one meteor server'
-      );
-      return;
-    } else if (redisSessions[0]._host !== appSessions[0]._host) {
-      console.log(
-        'To use built-in redis setup, both the meteor app and redis db need to be on the same server'
-      );
-      return;
-    }
 
     var list = nodemiral.taskList('Setup Redis');
 
@@ -35,7 +22,7 @@ module.exports = {
       }
     });
 
-    return api.runTaskList(list, appSessions, { verbose: api.getVerbose() });
+    return api.runTaskList(list, redisSessions, { verbose: api.getVerbose() });
   },
   logs: function(api) {
     var args = api.getArgs();
