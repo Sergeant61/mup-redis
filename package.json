@@ -1,6 +1,6 @@
 {
   "name": "mup-redis-plugin",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Plugin for Meteor Up to add support for redis",
   "main": "index.js",
   "scripts": {
